@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JavaScript Countdown Clock | Fionn Ross</title>
+    <style>
+        body{
+            
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Countdown Clock Built with Vanilla JavaScript</h1>
+    <p>Updated with ES6 syntax</p>
+    <div style="height:100px; background-color: blue; color: #fff; padding: 20px;" id="countdown-clock">
+    </div>
+    <script>
+        let theCountdownDate = new Date("June 30, 2026, 18:30:30").getTime();
+
+        const theIntervalsFunction = setInterval(function () {
+            const theCurrentTimeDate = new Date().getTime();
+
+            // theDistance is how long you have left to get to theCountdownDate
+            const theDistance = theCountdownDate - theCurrentTimeDate;
+
+            const days = Math.floor(theDistance / (1000 * 60 * 60 * 24));
+
+            const hours = Math.floor(theDistance % (1000 * 60 * 60 * 24));
+
+            const minutes = Math.floor(theDistance % (1000 * 60) / (1000 * 60));
+
+            const seconds = Math.floor(theDistance % (1000 * 60) / 1000);
+
+            // display the countdown
+            document.getElementById('countdown-clock').innerHTML = days + " Days " + hours + " Hours " + minutes + " Minutes " + seconds + " seconds ";
+
+            if (theDistance < 0) {
+                clearInterval(theIntervalsFunction);
+                document.getElementById('countdown-clock').innerHTML = "Countdown is complete!" 
+
+            }
+
+        }, 1000);
+
+
+    </script>
+
+</body>
+
+</html>
