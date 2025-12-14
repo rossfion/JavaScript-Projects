@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progress Bar Built with JavaScript and CSS</title>
+    <style>
+        body{
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        #progress-bar-container {
+            width: 100%;
+            background-color: #cecece;
+        }
+
+        #progress-bar {
+            width: 1%;
+            height: 30px;
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>JavaScript Progress Bar</h1>
+        <p>Updated with ES6 syntax</p>
+    </header>
+    <div id="progress-bar-container">
+        <div id="progress-bar"></div>
+    </div>
+    <br />
+    <button onclick="moveBar()">Click Me!</button>
+    <script>
+        function moveBar() {
+            const progressBar = document.getElementById('progress-bar');
+            let width = 1;
+            const barContainer = setInterval(traverseBarContainer, 10);
+            // var id = setInterval(traverseBarContainer, 1000);
+
+            function traverseBarContainer() {
+                if (width >= 100) {
+                    // clear everything
+                    clearInterval(barContainer);
+                } else {
+                    width++;
+                    progressBar.style.width = width + '%';
+                }
+            }
+
+
+        }
+    </script>
+</body>
+
+</html>
