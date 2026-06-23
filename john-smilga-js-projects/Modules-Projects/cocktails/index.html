@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- could probably use this with the Affirmations project -->
+<!-- This is the complete version after implementing ES6 principles -->
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cocktails (Search) App Built With HTML5, CSS, and Vanilla JavaScript | ES6 Modules</title>
+  <!-- font-awesome -->
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+/>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+  <form class="search-form">
+    <h2>cocktails API</h2>
+    <input type="text" placeholder="search your favorite cocktail" name="drink" />
+  </form>
+  <section class="section cocktails">
+      <article class="loading"></article>
+      <img src="./loading.gif" alt="loading" />
+    <h2 class="title">title</h2>
+    <div class="section-center"></div>
+  </section>
+  <!-- <script type="module" src="./test.js"></script> -->
+  <script type="module" src="./app.js"></script>
+</body>
+
+</html>
