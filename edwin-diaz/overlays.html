@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overlays Project Built with JavaScript and CSS</title>
+    <style>
+        body{
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        #overlay {
+            position: fixed;
+            display: none;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            z-index: 2;
+            cursor: pointer;
+        }
+
+        #overlay-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            font-size: 50px;
+            color: white;
+            transform: -webkit-translate(-50%, -50%);
+            transform: -o-translate(-50%, -50%);
+            transform: -ms-translate(-50%, -50%);
+            transform: -moz-translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="overlay" onclick="off()">
+        <div id="overlay-text">I chose to add some additional styling for the text and a blurred effect for the backdrop once the button is clicked. I learned the blur effect from Adam Khoury.</div>
+    </div>
+    <div style="padding: 20px;">
+        <h2>Overlay with Text</h2>
+        <button onclick="on()">Turn on overlay effect</button>
+    </div>
+    <script>
+        function on() {
+            document.getElementById('overlay').style.display = "block";
+        }
+
+        function off() {
+            document.getElementById('overlay').style.display = "none";
+        }
+    </script>
+</body>
+
+</html>

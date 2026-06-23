@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JavaScript Modal</title>
+    <link rel="stylesheet" href="modal-styles.css">
+</head>
+
+<body>
+    <h1>Modal Demo Built with Vanilla JavaScript and CSS</h1>
+    <button id="modal-button">Open Modal</button>
+    <div class="modal" id="modal-container">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>This modal project includes additional styling and has been updated using ES6 syntax. I learned the blur effect from Adam Khoury.</p>
+        </div>
+    </div>
+    <script>
+const modalButton = document.getElementById('modal-button');
+const modalContainer = document.getElementById('modal-container');
+const closeButton = document.getElementsByClassName('close')[0];
+
+closeButton.onclick = (n) =>{
+    modalContainer.style.display = "none";
+}
+
+modalButton.onclick = (n) => {
+    modalContainer.style.display = "block";
+}
+
+window.onclick = (event) => {
+    if(event.target === modalContainer){
+        modalContainer.style.display = "none";
+    }
+}
+
+
+    </script>
+    
+</body>
+
+</html>

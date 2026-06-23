@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo List Built with HTML, CSS and JavaScript</title>
+    <link rel="stylesheet" href="todolist.css">
+</head>
+<body>
+    <div class="container">
+        <div id="todolist-header" class="todolist-header">
+            <h1>My Amazing ToDo List App</h1>
+            <input type="text" id="todolist-input" placeholder="whaddaya wanna do today?">
+            <span class="create-button" onclick="createNewElement()">Create ToDo Item</span>
+        </div>
+
+        <ul id="todolist-ul">
+            <li>Take a nap</li>
+            <li>Study Hard</li>
+            <li>Remember to eat</li>
+            <li>Watch Demon Slayer</li>
+            <li>Shovel Snow</li>
+        </ul>
+    </div>
+    <script src="todolist.js"></script>
+</body>
+</html>
