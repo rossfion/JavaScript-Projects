@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comfy Store Ecommerce Store Built with HTML5, CSS, and Vanilla JavaScript | Home</title>
+    <!-- font-awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
+    <!-- local copy of font-awesome -->
+    <link rel="stylesheet" href="fontawesome-free-5.12.0-web/css/all.min.css">
+    <link rel="stylesheet" href="./style.css">
+
+</head>
+
+<body>
+    <!-- navbar -->
+    <nav class="navbar">
+        <div class="nav-center">
+            <!-- links -->
+            <div>
+                <button class="toggle-nav">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul class="nav-links">
+                    <li>
+                        <a href="index.html" class="nav-link">home</a>
+                    </li>
+                    <li>
+                        <a href="products.html" class="nav-link">products</a>
+                    </li>
+                    <li>
+                        <a href="about.html" class="nav-link">about</a>
+                    </li>
+                </ul><!-- ./ end ul class nav-links -->
+            </div>
+            <!-- logo -->
+            <img src="./images/logo-white.svg" alt="logo" class="nav-logo" />
+            <!-- cart icon -->
+
+            <div class="class-toggle-container">
+                <button class="toggle-cart">
+                    <i class="fas fa-shopping-cart"></i>
+                </button>
+                <span class="cart-item-count">1</span>
+            </div>
+        </div><!-- ./ div class nav-center -->
+    </nav><!-- ./ end nav class navbar-->
+    <!-- hero -->
+    <section class="hero">
+        <div class="hero-container">
+            <h1 class="text-slanted">
+                rest, relax, unwind
+            </h1>
+            <h3>Embrace your choice - we do</h3>
+            <a href="products.html" class="hero-btn">
+                show now
+            </a>
+        </div>
+    </section><!-- ./ end section class hero -->
+    <!-- sidebar-->
+    <div class="sidebar-overlay">
+        <aside class="sidebar">
+            <!-- close -->
+            <button class="sidebar-close">
+                <i class="fas fa-times"></i>
+            </button>
+            <!-- links -->
+            <ul class="sidebar-links">
+                <li>
+                    <a href="index.html" class="sidebar-link"><i class="fas fa-home fa-fw"></i> home</a>
+                </li>
+                <li>
+                    <a href="products.html" class="sidebar-link"><i class="fas fa-couch fa-fw"></i> products</a>
+                </li>
+                <li>
+                    <a href="about.html" class="sidebar-link"><i class="fas fa-book fa-fw"></i> about</a>
+                </li>
+            </ul><!-- ./ end ul class sidebar-links -->
+        </aside><!-- ./ end aside class sidebar -->
+    </div><!-- div class sidebar-overlay -->
+    <!-- cart -->
+    <div class="cart-overlay">
+        <aside class="cart">
+            <button class="cart-close">
+                <i class="fas fa-times"></i>
+            </button>
+
+            <header>
+                <h3 class="text-slanted">your bag</h3>
+            </header>
+            <!-- cart items -->
+            <div class="cart-items"></div>
+            <!-- footer -->
+            <footer>
+                <h3 class="cart-total text-slanted">
+                    total: $12.99
+                </h3>
+                <button class="cart-checkout btn">checkout</button>
+            </footer>
+        </aside><!-- ./ end aside class cart-->
+    </div><!-- ./ end div class cart-overlay -->
+
+    <!-- featured products -->
+    <section class="section featured">
+        <div class="title">
+            <h2><span>/</span> featured</h2>
+        </div>
+        <div class="featured-center section-center">
+            <h2 class="section-loading">
+                loading...
+            </h2>
+        </div>
+        <a href="products.html" class="btn">
+            all products
+        </a>
+    </section><!-- ./ end section class section featured-->
+    <!-- ./ end featured products -->
+
+    <script type="module" src="./index.js"></script>
+</body>
+
+</html>
