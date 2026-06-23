@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building a Boolean Check Function Using JavaScript</title>
+</head>
+
+<body>
+    <script>
+        function booWho(bool) {
+            if (bool === true || bool === false) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        console.log(booWho(true));
+        console.log(booWho(false));
+        console.log(booWho([1,2,3]));
+        console.log(booWho([].slice()));
+        console.log(booWho({"a":1}));
+        console.log(booWho(1));
+        console.log(booWho(NaN));
+        console.log(booWho("a"));
+        console.log(booWho("true"));
+        console.log(booWho("false"));
+
+    </script>
+</body>
+
+</html>

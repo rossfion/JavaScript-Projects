@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building a String Inverter Using JavaScript</title>
+</head>
+
+<body>
+    <script>
+        function reverseString(word) {
+            let chars = word.split("").reverse().join("");
+            return chars;
+        }
+        console.log(reverseString("hello"));
+        console.log(reverseString("Howdy"));
+        console.log(reverseString("Greetings from Earth"));
+    </script>
+</body>
+
+</html>

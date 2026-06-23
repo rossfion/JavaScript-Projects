@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+        Build a Set of Football Team Cards
+    </title>
+    <!-- <link rel="stylesheet" href="styles.css" /> -->
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --dark-grey: #0a0a23;
+            --light-grey: #f5f6f7;
+            --white: #ffffff;
+            --black: #000;
+        }
+
+        body {
+            background-color: var(--dark-grey);
+            text-align: center;
+            padding: 10px;
+        }
+
+        .title,
+        .options-label,
+        .team-stats,
+        footer {
+            color: var(--white);
+        }
+
+        .title {
+            margin: 1.3rem 0;
+        }
+
+        .team-stats {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            font-size: 1.3rem;
+            margin: 1.2rem 0;
+        }
+
+        .options-label {
+            font-size: 1.2rem;
+        }
+
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .player-card {
+            background-color: var(--light-grey);
+            padding: 1.3rem;
+            margin: 1.2rem;
+            width: 300px;
+            border-radius: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .team-stats {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="title">Team stats</h1>
+    <main>
+        <div class="team-stats">
+            <p>Team: <span id="team"></span></p>
+            <p>Year: <span id="year"></span></p>
+            <p>Head coach: <span id="head-coach"></span></p>
+        </div>
+        <label class="options-label" for="players">Filter Teammates:</label>
+        <select name="players" id="players">
+            <option value="all">All Players</option>
+            <option value="forward">Position Forward</option>
+            <option value="midfielder">Position Midfielder</option>
+            <option value="defender">Position Defender</option>
+            <option value="goalkeeper">Position Goalkeeper</option>
+        </select>
+        <div class="cards" id="player-cards"></div>
+    </main>
+    <footer>&copy; freeCodeCamp</footer>
+    <!-- <script src="./script.js"></script> -->
+    <script>
+        const footballTeam = {
+            team: "Jamaica",
+            year: 2026,
+            headCoach: "Rudolph Speid (interim)",
+            players: [
+
+                { name: "Andre Blake", position: "goalkeeper", isCaptain: true },
+                { name: "Leon Bailey", position: "forward", isCaptain: false },
+                { name: "Jon Russell", position: "midfielder", isCaptain: false },
+                { name: "Mason Holgate", position: "defender", isCaptain: false },
+                { name: "Jahmail Waite", position: "goalkeeper", isCaptain: false },
+                { name: "Isaac Hayden", position: "midfielder", isCaptain: false },
+                { name: "Warner Brown", position: "forward", isCaptain: false },
+                { name: "Greg Leigh", position: "defender", isCaptain: false }
+
+            ]
+
+        };
+        const coach = document.getElementById("head-coach");
+        const year = document.getElementById("year");
+        const team = document.getElementById("team");
+        const playerData = document.getElementById("player-cards");
+        const dropdownMenu = document.getElementById('players');
+
+        // display coach, team and year on page
+        coach.textContent = footballTeam.headCoach;
+        year.innerHTML = footballTeam.year;
+        team.innerText = footballTeam.team;
+
+        // display the player data
+        function displayPlayer(players) {
+            playerData.innerHTML = "";
+
+            // display the player cards
+            players.forEach((element) => {
+                // create card element
+                const cardDiv = document.createElement("div");
+                cardDiv.className = "player-card";
+                const h2 = document.createElement("h2");
+                const p = document.createElement("p");
+
+                // update the values
+                h2.textContent = element.isCaptain ? `(Captain)${element.name}` : element.name;
+                p.textContent = element.position;
+
+                // append the new html element
+                cardDiv.appendChild(h2);
+                cardDiv.appendChild(p);
+                playerData.appendChild(cardDiv);
+            });
+
+        }
+
+        // dropdown menu filtering functionality
+        dropdownMenu.addEventListener('change', (event) => {
+            const valueOfTarget = event.target.value;
+            if (valueOfTarget === "all") {
+                displayPlayer(footballTeam.players);
+
+            } else {
+                const filteredPlayers = footballTeam.players.filter(element => element.position === valueOfTarget);
+                displayPlayer(filteredPlayers);
+            }
+
+
+
+        });
+
+        displayPlayer(footballTeam.players);
+    </script>
+</body>
+
+</html>

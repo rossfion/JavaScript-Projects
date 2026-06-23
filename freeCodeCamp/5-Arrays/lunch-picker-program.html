@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building a Lunch Picker Program Using JavaScript</title>
+</head>
+
+<body>
+    <script>
+        const lunches = [];
+
+        function addLunchToEnd(lunches, lunchItemString) {
+            lunches.push(lunchItemString);
+            console.log(`${lunchItemString} added to the end of the lunch menu.`);
+            return lunches;
+        }
+        console.log(addLunchToEnd(lunches, "Tacos"));
+        addLunchToEnd(["Pizza", "Tacos"], "Burger");
+
+        function addLunchToStart(lunches, lunchItemString) {
+            lunches.unshift(lunchItemString);
+            console.log(`${lunchItemString} added to the start of the lunch menu.`);
+            return lunches;
+
+        }
+        console.log(addLunchToStart(lunches, "Sushi"));
+        addLunchToStart(["Burger", "Sushi"], "Pizza");
+
+        function removeLastLunch(lunches){
+            if(lunches.length === 0){
+                console.log("No lunches to remove.");
+            } else {
+                const removedLunch = lunches.pop();
+                console.log(`${removedLunch} removed from the end of the lunch menu.`);
+            }
+            return lunches;
+        }
+        removeLastLunch(["Sushi", "Pizza", "Noodles"]);
+
+        function removeFirstLunch(lunches){
+            if(lunches.length === 0){
+                console.log("No lunches to remove.");
+            } else {
+                const removedLunch2 = lunches.shift();
+                console.log(`${removedLunch2} removed from the start of the lunch menu.`);
+            }
+            return lunches;
+        }
+        removeFirstLunch(["Salad", "Eggs", "Cheese"]);
+        removeFirstLunch(["Sushi", "Pizza", "Burger"]);
+
+        function getRandomLunch(lunches){
+            const randomLunch = lunches[Math.floor(Math.random() * lunches.length)];
+            if(lunches.length > 0){
+                console.log(`Randomly selected lunch: ${randomLunch}`);
+            } else {
+                console.log(`No lunches available.`);
+                return randomLunch;
+            }
+        }
+
+        function showLunchMenu(lunches){
+            if(lunches.length > 0){
+                console.log("Menu items: " + lunches.join(", "));
+            } else {
+                console.log("The menu is empty.");
+            }
+        }
+        showLunchMenu(["Greens", "Corns", "Beans"]);
+        showLunchMenu(["Pizza", "Burger", "Fries", "Salad"]);
+
+    </script>
+</body>
+
+</html>

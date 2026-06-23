@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Implement an HTML Entity Converter</title>
+</head>
+
+<body>
+    <script>
+        function convertHTML(str) {
+            // what values are we replacing
+            const entities = {
+                // add entites from the question here as key-value pairs
+                "&": "&amp;",
+                "<": "&lt;",
+                ">": "&gt;",
+                '"': "&quot;",
+                "'": "&apos;",
+            };
+            // search with regex for those values and replace them
+            return str.replace(/[&<>'\"]/g, char => entities[char]);
+        }
+        console.log(convertHTML("Dolce & Gabbana"));
+        console.log(convertHTML("Hamburgers < Pizza < Tacos"));
+        console.log(convertHTML("Sixty > twelve"));
+        console.log(convertHTML('Stuff in "quotation marks"'));
+        console.log(convertHTML("Schindler's List"));
+    </script>
+</body>
+
+</html>

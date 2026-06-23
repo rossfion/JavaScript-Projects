@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Implementing a Range-Based LCM Calculator Using JavaScript</title>
+</head>
+
+<body>
+    <script>
+        function smallestCommons(arr) {
+            const [min, max] = arr.sort((a, b) => a - b);
+
+            const range = [];
+            for (let i = min; i <= max; i++) {
+                range.push(i);
+            }
+
+            const gcd = (a, b) => (b === 0 ? a : gcd(b, a % b));
+
+            const lcm = (a, b) => (a * b) / gcd(a, b);
+
+            return range.reduce((accumulator, currentValue) => lcm(accumulator, currentValue));
+        }
+        console.log(smallestCommons([1, 5]));
+        console.log(smallestCommons([5, 1]));
+        console.log(smallestCommons([2, 10]));
+        console.log(smallestCommons([1, 13]));
+        console.log(smallestCommons([23, 18]));
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sum All Numbers Algorithm Using JavaScript</title>
+</head>
+
+<body>
+    <script>
+        function sumAll(arr) {
+            // get the highest and lowest numbers
+            const minimumNumber = Math.min(...arr);
+            const maximumNumber = Math.max(...arr);
+            // loop over input array and sum up all numbers
+            let sum = 0;
+            for (let i = minimumNumber; i <= maximumNumber; i++) sum += i;
+            return sum;
+        }
+
+        console.log(sumAll([1, 4]));
+        console.log(sumAll([4, 1]));
+        console.log(sumAll([5, 10]));
+        console.log(sumAll([10, 5]));
+    </script>
+</body>
+
+</html>

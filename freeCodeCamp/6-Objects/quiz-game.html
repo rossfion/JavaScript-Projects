@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building a Quiz Game Using JavaScript</title>
+</head>
+
+<body>
+    <script>
+        let questions = [
+            {
+                category: "Math",
+                question: "What is 15 - 2?", choices: ["5", "2", "13"], answer: "13"
+
+            },
+            {
+                category: "Science", question: "Which planet is the largest in the solar system?", choices: ["Earth", "Mars", "Jupiter"], answer: "Jupiter"
+            },
+            { category: "Geography", question: "What is the capital of the United Kingdom?", choices: ["Edinburgh", "Cardiff", "London"], answer: "London" },
+            { category: "American History", question: "Who was the first president of the United States?", choices: ["Abraham Lincoln", "George Washington", "Quincy Adams"], answer: "George Washington" },
+            { category: "JavaScript", question: "Which answer is true about functions?", choices: ["functions are blocks of code created to complete tasks", "functions are duties and responsibilities of code", "functions use dot notation"], answer: "functions are blocks of code created to complete tasks" },
+
+        ];
+
+        function getRandomQuestion(questions) {
+            let randomQuestion = Math.floor(Math.random() * questions.length);
+            return questions[randomQuestion];
+        }
+
+        function getRandomComputerChoice(choices) {
+            let randomChoice = Math.floor(Math.random() * choices.length);
+            return choices[randomChoice];
+        }
+
+        function getResults(question, computerChoice) {
+            if (question.answer === computerChoice) {
+                return "The computer's choice is correct!";
+            } else {
+                return `The computer's choice is wrong. The correct answer is: ${question.answer}`;
+            }
+        }
+    </script>
+</body>
+
+</html>

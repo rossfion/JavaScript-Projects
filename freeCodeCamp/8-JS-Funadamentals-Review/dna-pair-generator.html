@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Implement a DNA Pair Generator</title>
+</head>
+
+<body>
+    <script>
+        function pairElement(str) {
+
+            let pairedArray = [];
+
+            function pairCheck(letter) {
+                if (letter === 'A') {
+                    return 'T';
+                } else if (letter === 'T') {
+                    return 'A';
+                } else if (letter === 'C') {
+                    return 'G';
+                } else if (letter === 'G') {
+                    return 'C'
+                }
+
+            }
+
+            for (let letter of str) {
+                console.log(letter);
+                pairedArray.push([letter, pairCheck(letter)]);
+
+            }
+
+            return pairedArray;
+        }
+        console.log(pairElement("ATCGA"));
+        console.log(pairElement("TTGAG"));
+    </script>
+</body>
+
+</html>

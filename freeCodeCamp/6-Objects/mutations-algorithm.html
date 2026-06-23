@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Implementing the Mutations Algorithm Using JavaScript</title>
+</head>
+
+<body>
+    <script>
+        function mutation(arr) {
+            // lowercase all input
+            const targetWord = arr[0].toLowerCase();
+            const testWord = arr[1].toLowerCase();
+
+            // loop through test word
+            for (let i = 0; i < testWord.length; i++) {
+                /* if at least one letter of the test word cannot be found in the target word we know both words are not mutations */
+                if (targetWord.indexOf(testWord[i]) === -1) {
+                    return false; // it is not a mutation
+                }
+            }
+            return true;
+        }
+        console.log(mutation(["hello", "Hello"]));
+        console.log(mutation(["hello", "hey"]));
+        console.log(mutation(["Alien", "line"]));
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Implementing a Sorted Index Finder Using JavaScript</title>
+</head>
+
+<body>
+    <script>
+        function getIndexToIns(arr, num) {
+            const sortedArr = arr.sort((a, b) => a - b);
+
+            const index = sortedArr.findIndex(currentNum => num <= currentNum);
+            return index === -1 ? sortedArr.length : index;
+        }
+        console.log(getIndexToIns([10, 20, 30, 40, 50], 35));
+        console.log(getIndexToIns([3, 10, 5], 3));
+        console.log(getIndexToIns([2, 5, 10], 15));
+    </script>
+</body>
+
+</html>

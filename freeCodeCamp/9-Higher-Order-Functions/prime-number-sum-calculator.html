@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building a Prime Number Sum Calculator Using JavaScript</title>
+</head>
+
+<body>
+    <script>
+        function sumPrimes(num) {
+            // Helper function to check for primality
+            function isPrime(n) {
+                if (n <= 1) return false;
+                for (let i = 2; i <= Math.sqrt(n); i++) {
+                    if (n % i === 0) {
+                        return false;
+                    }
+                }
+                return true;
+            }
+            let sum = 0;
+            // Main loop to find and sum primes
+            for (let i = 2; i <= num; i++) {
+                if (isPrime(i)) {
+                    sum += i;
+                }
+            }
+            return sum;
+        }
+        console.log(sumPrimes(10));
+        console.log(sumPrimes(5));
+        console.log(sumPrimes(2));
+        console.log(sumPrimes(0));
+        console.log(sumPrimes(977));
+    </script>
+</body>
+
+</html>

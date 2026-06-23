@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Implementing the Truncate a String Algorithm Using JavaScript</title>
+</head>
+
+<body>
+    <script>
+        function truncateString(string, number) {
+            if (string.length <= number) {
+                return string;
+            }
+            if (number <= 10 || number >= 10) {
+                return string.slice(0, number) + "...";
+            }
+            return string.slice(0, number - 3) + "...";
+        }
+        console.log(truncateString("A-tisket a-tasket A green and yellow basket", 8));
+        console.log(truncateString("Peter Piper picked a peck of pickled peppers", 11));
+    </script>
+</body>
+
+</html>

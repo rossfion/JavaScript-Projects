@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lightbox Viewer</title>
+    <style>
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            display: none;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        #lightbox-image {
+            max-width: 90%;
+            max-height: 80%;
+        }
+
+        #close-btn {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 40px;
+            background: none;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .gallery {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 50px;
+        }
+
+        .gallery-item {
+            width: 150px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="gallery">
+        <img class="gallery-item" src="https://cdn.freecodecamp.org/curriculum/labs/stonehenge-thumbnail.jpg">
+        <img class="gallery-item" src="https://cdn.freecodecamp.org/curriculum/labs/storm-thumbnail.jpg">
+        <img class="gallery-item" src="https://cdn.freecodecamp.org/curriculum/labs/trees-thumbnail.jpg">
+    </div>
+
+    <div class="lightbox" id="lightbox">
+        <button id="close-btn">&times;</button>
+        <img id="lightbox-image" src=""
+            alt="Full-size preview">
+        
+    </div>
+    <script>
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = document.getElementById('lightbox-image');
+        const closeBtn = document.getElementById('close-btn');
+
+        // Open the lightbox
+        galleryItems.forEach(item => {
+            item.addEventListener("click", () => {
+                const fullSrc = item.src.replace('-thumbnail', '');
+                lightboxImage.src = fullSrc;
+                lightbox.style.display = 'flex';
+            });
+
+        });
+
+        // close button event
+        closeBtn.addEventListener("click", () => {
+            lightbox.style.display = 'none';
+        });
+
+        // click anywhere in the lightbox to close it
+        lightbox.addEventListener("click", (event) => {
+            if (event.target === lightbox) {
+                lightbox.style.display = 'none';
+            }
+
+        });
+    </script>
+</body>
+
+</html>

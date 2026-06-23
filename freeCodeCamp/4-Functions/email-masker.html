@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building an Email Masker Using JavaScript</title>
+</head>
+
+<body>
+    <script>
+        let email = "apple.pie@example.com";
+        email = "freecodecamp@example.com";
+
+        function maskEmail(email) {
+            let findAtSymbol = email.indexOf("@");
+            let username = email.slice(1, findAtSymbol - 1);
+            let domain = email.slice(findAtSymbol);
+            let mask = "*";
+            let maskedEmail = email.replace(username, mask.repeat(username.length));
+            return maskedEmail;
+        }
+        console.log(maskEmail(email));
+
+
+
+    </script>
+</body>
+
+</html>

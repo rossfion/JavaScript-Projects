@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARIA Accessibility Exercise | Custom Tab Control Demo Using Aria-Selected and Aria-Controls</title>
+    <style>
+        [role="tablist"] {
+            display: flex;
+            /* border-bottom: 2px solid #ddd;
+            gap: 0.25rem; */
+            border-bottom: 2px solid #ccc;
+            margin-bottom: 1em;
+            gap: 4px;
+            /* font-family: system-ui, sans-serif; */
+            background: #fafafa;
+            padding: 0.25em;
+        }
+
+        [role="tab"] {
+            background: #f5f5f5;
+            border: 1px solid #ccc;
+            border-bottom: none;
+            padding: 8px 16px;
+            cursor: pointer;
+            font-size: 14px;
+            color: #444;
+            border-radius: 4px 4px 0 0;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        [role="tab"]:hover,
+        [role="tab"]:focus {
+            background: #e8f0fe;
+            outline: none;
+
+        }
+
+        [role="tab"][aria-selected="true"] {
+            /* background-color: #fff;
+            color: #0078d4; */
+            background: #fff;
+            border-color: #ccc;
+            border-bottom: 2px solid #fff;
+            color: #000;
+            font-weight: 600;
+            position: relative;
+            top: 1px;
+
+        }
+
+        [role="tab"]:focus-visible {
+            outline: 2px solid #0078d4;
+            outline-offset: 2px;
+
+        }
+
+        [role="tabpanel"] {
+            border: 1px solid #ccc;
+            border-radius: 0 4px 4px 4px;
+            padding: 16px;
+            background-color: #fff;
+            color: #333;
+            font-size: 15px;
+            line-height: 1.4;
+        }
+
+        [role="tabpanel"][hidden] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div role="tablist">
+        <button role="tab" aria-controls="section1" aria-selected="true" id="tab1">Tab One</button>
+        <button role="tab" aria-controls="section2" aria-selected="false" id="tab2">Tab Two</button>
+        <button role="tab" aria-controls="section3" aria-selected="false" id="tab3">Tab Three</button>
+    </div>
+    <div id="section1" role="tabpanel" aria-labelledby="tab1">
+        Section 1 content
+    </div>
+
+    <div id="section2" role="tabpanel" aria-labelledby="tab2" hidden>
+        Section 2 content
+    </div>
+
+    <div id="section3" role="tabpanel" aria-labelledby="tab3" hidden>
+        Section 3 content
+    </div>
+    <script>
+        const tabs = document.querySelectorAll('[role="tab"]');
+        const tabList = document.querySelectorAll('[role="tablist"]');
+
+        tabs.forEach(tab => {
+            tab.addEventListener("click", () => {
+                activateTab(tab);
+            });
+            tab.addEventListener("keydown", (e) => {
+                const key = e.key;
+                const currentIndex = Array.from(tabs).indexOf(tab);
+                let newIndex = null;
+
+                if(key === 'ArrowRight'){
+                    newIndex = (currentIndex + 1) % tabs.length;
+                } else if (key === 'ArrowLeft'){
+                    newIndex = (currentIndex - 1 + tabs.length) % tabs.length;
+                } else if (key === 'Home'){
+                    newIndex = 0;
+                } else if (key === 'End'){
+                    newIndex = tabs.length - 1;
+                }
+
+                if(newIndex !== null){
+                    tabs[newIndex].focus();
+                    activateTab(tabs[newIndex]);
+                }
+
+            });
+        });
+
+        function activateTab(tab){
+            const tabPanels = document.querySelectorAll('[role="tabpanel"]');
+
+            tabs.forEach(t => {
+                t.setAttribute('aria-selected', 'false');
+                t.setAttribute('tabindex', '-1')
+            });
+
+            tabPanels.forEach(panel => panel.hidden = true);
+
+            tab.setAttribute('aria-selected', 'true');
+            tab.removeAttribute('tabindex');
+
+            const panelId = tab.getAttribute('aria-controls');
+            const panel = document.getElementById(panelId);
+            panel.hidden = false;
+            tab.focus();
+        }
+
+    </script>
+</body>
+
+</html>

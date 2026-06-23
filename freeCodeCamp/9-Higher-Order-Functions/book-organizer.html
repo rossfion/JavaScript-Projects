@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building a Book Organizer Using JavaScript</title>
+</head>
+
+<body>
+    <script>
+        const books = [
+            { title: "JavaScript for Absolute Beginners", authorName: "Terry Navage", releaseYear: 2010 },
+            { title: "JavaScript Bible", authorName: "Danny Goodman with Michael Morrison", releaseYear: 2007 },
+            { title: "Pro PHP and jQuery", authorName: "Jason Lengstorf", releaseYear: 2010 },
+            { title: "CSS Mastery", authorName: "Andy Budd with Cameron Moll & Simon Collison", releaseYear: 2009 }
+        ];
+        function sortByYear(book1, book2) {
+            if (book1.releaseYear < book2.releaseYear) {
+                return -1;
+            } else if (book1.releaseYear > book2.releaseYear) {
+                return 1;
+            } else {
+                return 0;
+            }
+        }
+        console.log(sortByYear(books[0], books[1]));
+        console.log(sortByYear(books[1], books[1]));
+        console.log(sortByYear(books[1], books[0]));
+
+        const filteredBooks = books.filter(book => book.releaseYear <= 2009);
+        console.log(filteredBooks);
+
+        const sortedBooks = filteredBooks.sort(sortByYear);
+        console.log(sortedBooks);
+
+        sortByYear(filteredBooks[0], filteredBooks[1]);
+
+    </script>
+</body>
+
+</html>

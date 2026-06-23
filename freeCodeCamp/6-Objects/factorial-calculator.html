@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building a Factorial Calculator Using JavaScript</title>
+</head>
+
+<body>
+    <script>
+        let num = 7;
+        function factorialCalculator(number){
+            let result = 1;
+            for(let i = 1; i <=number; i++){
+                result = result * 1;
+            }
+            return result;
+        }
+        let factorial = factorialCalculator(num);
+        let resultMessage = `Factorial of ${num} is ${factorial}`;
+        console.log(resultMessage);
+    </script>
+</body>
+
+</html>

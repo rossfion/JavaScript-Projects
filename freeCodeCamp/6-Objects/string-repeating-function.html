@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building a String Repeating Function Using JavaScript</title>
+</head>
+
+<body>
+    <script>
+        function repeatStringNumTimes(str, num) {
+            let newString = "";
+            if (num <= 0) {
+                return "";
+            }
+            for (let i = 0; i < num; i++) {
+                newString += str // to append characters to the new string
+            }
+            return newString;
+        }
+        console.log(repeatStringNumTimes("*", 3));
+        console.log(repeatStringNumTimes("abc", 3));
+        console.log(repeatStringNumTimes("abc", 4));
+        console.log(repeatStringNumTimes("abc", 1));
+        console.log(repeatStringNumTimes("*", 8));
+        console.log(repeatStringNumTimes("abc", -2));
+        console.log(repeatStringNumTimes("abc", 0));
+    </script>
+</body>
+
+</html>

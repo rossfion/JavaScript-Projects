@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building a String Formatter Using JavaSctipt</title>
+</head>
+<body>
+    <script>
+        const userInput = "   Hello World!   ";
+        console.log("Original input: ");
+        console.log(userInput);
+
+        const cleanedInput = userInput.trim();
+        console.log("Result of trimming whitespace from both ends: ");
+        console.log(cleanedInput);
+
+        const trimmedStart = userInput.trimStart();
+        console.log("After using the trimStart() method - leading spaces removed");
+        console.log(trimmedStart);
+
+        const trimmedEnd = userInput.trimEnd();
+        console.log("After using the trimEnd() method - trailing spaces removed");
+        console.log(trimmedEnd);
+        
+        const upperCaseInput = cleanedInput.toUpperCase();
+        console.log("Result of using the toUpperCase():");
+        console.log(upperCaseInput);
+
+        const lowerCaseInput = cleanedInput.toLowerCase();
+        console.log("Result of using the toLowerCase():");
+        console.log(lowerCaseInput);
+
+        const lowerCaseWord = "camelcase";
+        const cameCasedVersion = lowerCaseWord.slice(0,5) + lowerCaseWord[5].toUpperCase() + lowerCaseWord.slice(-3);
+        console.log("camel cased version:");
+        console.log(cameCasedVersion);
+    </script>
+</body>
+</html>
