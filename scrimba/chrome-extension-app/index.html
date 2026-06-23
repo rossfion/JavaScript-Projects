@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chrome Extension App Built With JavaScriot</title>
+    <link rel="stylesheet" href="./normalize.css">
+    <!-- <link rel="stylesheet" href="./index.css"> -->
+    <style>
+        body {
+            margin: 0;
+            padding: 10px;
+            font-family: Arial, Helvetica, sans-serif;
+            min-width: 400px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1 solid #5f9341;
+            margin-bottom: 4px;
+        }
+
+        #delete-btn {
+            background: white;
+            color: #5f9341;
+            border: 1px solid #5f9341;
+        }
+
+        button {
+            background: #5f9341;
+            color: white;
+            padding: 10px 20px;
+            border: 1px solid #5f9341;
+            font-weight: bold;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 20px;
+        }
+
+        li {
+            margin-top: 5px;
+        }
+
+        a {
+            color: #5f9341;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" id="input-el" />
+    <!-- <button id="input-btn" onclick="saveInput()">SAVE INPUT</button> -->
+    <button id="input-btn">SAVE INPUT</button>
+    <button id="tab-btn">SAVE TAB</button>
+    <button id="delete-btn">DELETE ALL</button>
+    <ul id="ul-el"></ul>
+    <!-- <script src="./index.js"></script> -->
+    <script>
+        let myLeads = [];
+        const inputField = document.getElementById("input-el");
+        const inputBtn = document.getElementById("input-btn");
+        const ulList = document.getElementById("ul-el");
+        const deleteBtn = document.getElementById("delete-btn");
+        const tabBtn = document.getElementById("tab-btn");
+
+        //localStorage.setItem("myLeads", "www.example.com");
+
+        // function saveInput() {
+        //     console.log("button clicked from onclick attribute!");
+        // }
+
+        //localStorage.clear();
+        const leadsFromLocalStorage = JSON.parse(localStorage.getItem("myLeads"));
+        console.log(leadsFromLocalStorage);
+
+        // check if localStorage is truthy. If so, set myLeads to its value and call renderLeads function
+        if (leadsFromLocalStorage) {
+            myLeads = leadsFromLocalStorage;
+            render(myLeads);
+        }
+
+        function render(leads) {
+            let listItems = "";
+            for (let i = 0; i < leads.length; i++) {
+                listItems += `
+                <li>
+                    <a target='_blank' href='${leads[i]}'>
+                        ${leads[i]}
+                    </a>
+                </li>`;
+                //console.log(listItems)
+            }
+            ulList.innerHTML = listItems;
+        }
+
+        inputBtn.addEventListener("click", function () {
+            myLeads.push(inputField.value);
+            inputField.value = "";
+
+            // save the lea to localStorage
+            localStorage.setItem("myLeads", JSON.stringify(myLeads));
+            render(myLeads);
+            console.log(localStorage.getItem("myLeads"));
+            //console.log(myLeads);
+            // myLeads.push("www.awesomelead.com");
+            // console.log(myLeads);
+            //console.log("Button clicked from addEventListener");
+        });
+
+        const tabs = [
+            { url: "https://www.linkedin.com/in/per-harald-borgen/" }
+        ]
+
+        // listen for double clicks on tabBtn, log Per's LinkedIn profile link
+        tabBtn.addEventListener("dblclick", function () {
+            // Grab the URL of the current tab
+            chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+                // since only one tab should be active and in the current window at once
+                // the return variable should only have only one entry
+                // save the url instead of logging it out
+                myLeads.push(tabs[0].url);
+                localStorage.setItem("myLeads", JSON.stringify(myLeads));
+                console.log(tabs[0].url);
+            });
+
+
+        })
+
+        /* listen for double clicks on the delete button. When clicked, clear the localStorage, the myleads array and call the renderLeads function */
+
+        deleteBtn.addEventListener("dblclick", function () {
+            console.log("double clicked!");
+            localStorage.clear();
+            myLeads = [];
+            render(myLeads);
+        });
+
+        /* an alternative approach
+        for(let i = 0; i < myLeads.length; i++){
+            
+            // create element
+            // set text element
+            // append to ul
+            const li = document.createElement("li");
+            li.textContent = myLeads[i];
+            ulList.append(li);
+            
+        }
+*/
+
+    </script>
+</body>
+
+</html>

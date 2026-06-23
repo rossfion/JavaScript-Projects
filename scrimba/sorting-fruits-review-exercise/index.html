@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorting Review | JavaScript</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+    <div id="apple-shelf"></div>  
+    <div id="orange-shelf"></div>
+    <script>
+        let fruit = ["🍎", "🍊", "🍎", "🍎", "🍊"]
+        let appleShelf = document.getElementById("apple-shelf")
+        let orangeShelf = document.getElementById("orange-shelf")
+
+// Create a function that puts the apples onto the appleShelf
+// and the oranges onto the orangeShelf. Use a for loop,
+// a conditional statement, and the textContent property.
+
+function sortFruit(){
+    for(let i = 0; i < fruit.length; i++){
+        if(fruit[i] === "🍎"){
+            appleShelf.textContent += "🍎";
+        } else if(fruit[i] === "🍊"){
+            orangeShelf.textContent += "🍊";
+        }
+    }
+}
+sortFruit();
+
+
+    </script>
+</body>
+
+</html>

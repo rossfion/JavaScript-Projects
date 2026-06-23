@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objects Review | JavaScript</title>
+</head>
+<body>
+    <p id="person-el"></p>
+    <script>
+        let person ={
+            name: "Fionn",
+            age: "67",
+            country: "United States"
+        }
+
+        function logData(){
+            let personEl = document.getElementById("person-el");
+            personEl.textContent = person.name + " is " + person.age + " and lives in " + person.country;
+
+        }
+        logData();
+		
+		/* could also simply console.log the string within the function like this:
+		console.log(person.name + " is " + person.age + " and lives in " + person.country); and then call the function */
+    </script>
+</body>
+</html>
